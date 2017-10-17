@@ -4,9 +4,9 @@ var clicked_message;
 function soldatClicker() {}
 
 soldatClicker.prototype.start = function () {
+  var soldat_location = soldatClicker.prototype.getLocation();
    $('.markup').on('dblclick', function(){
     clicked_message = $(this);
-    var soldat_location = soldatClicker.prototype.getLocation();
     if(soldat_location.length == 0) {
       return false;
     }
@@ -31,7 +31,7 @@ soldatClicker.prototype.readWriteFile = function() {
   }
   if(error_state) {
     var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- There will be a file created to your soldat path.  This file is location at <strong>%localappdata%/Discord/app-VERSION/"</strong>.  Delete this file is you want to change the path</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
-    clicked_message.after(element);
+    $(".message-group:last").after(element);
     $("#path").on('change', function(){
       if($("#path").val() != "") {
         fs.writeFile(txt_path, $("#path").val().replace(/\//g, "\\"), function(err) {
