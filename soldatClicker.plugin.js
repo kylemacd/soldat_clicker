@@ -5,7 +5,7 @@ function soldatClicker() {}
 
 soldatClicker.prototype.start = function () {
   var soldat_location = soldatClicker.prototype.getLocation();
-   $('.markup').on('dblclick', function(){
+   $('.message-group').on('dblclick', function(){
     clicked_message = $(this);
     if(soldat_location.length == 0) {
       return false;
