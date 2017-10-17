@@ -1,9 +1,11 @@
 //META{"name":"soldatClicker"}*//
 const fs = require('fs');
+var clicked_message;
 function soldatClicker() {}
 
 soldatClicker.prototype.start = function () {
-  $('.markup').on('dblclick', function(){
+   $('.markup').on('dblclick', function(){
+    clicked_message = $(this);
     var soldat_location = soldatClicker.prototype.getLocation();
     if(soldat_location.length == 0) {
       return false;
@@ -28,16 +30,17 @@ soldatClicker.prototype.readWriteFile = function() {
     error_state = true;
   }
   if(error_state) {
-    var element = '<div id="setup-wrapper" style="width: 100%; height: 200px; background: #ccc;">PATH:<input type="text" id="path" style="width: 50%;" /></div>';
-    $('body').insert(element);
+    var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- There will be a file created to your soldat path.  This file is location at <strong>%localappdata%/Discord/app-VERSION/"</strong>.  Delete this file is you want to change the path</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
+    clicked_message.after(element);
     $("#path").on('change', function(){
       if($("#path").val() != "") {
-        fs.writeFile(txt_path, $("#path").val(), function(err) {
+        fs.writeFile(txt_path, $("#path").val().replace(/\//g, "\\"), function(err) {
           if(err) {
               return console.log(err);
           }
         });
         $("#setup-wrapper").remove();
+        location.reload();
       } else {
         alert("Must enter a path!");
       }
@@ -96,7 +99,7 @@ soldatClicker.prototype.getDescription = function () {
 };
 
 soldatClicker.prototype.getVersion = function () {
-    return "0.1.0";
+    return "0.0.1";
 };
 
 soldatClicker.prototype.getAuthor = function () {
