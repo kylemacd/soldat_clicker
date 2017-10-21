@@ -22,7 +22,7 @@ soldatClicker.prototype.readWriteFile = function() {
   var error_state = false;
   var soldatLocation = localStorage.getItem("soldatLocation")
   if(soldatLocation == null || soldatLocation == "") {
-    var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
+    var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe (Ex: F://Soldat/soldat.exe)</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
     $(".message:last").after(element);
     $("#path").on('change', function(){
       if($("#path").val() != "") {
