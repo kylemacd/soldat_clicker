@@ -4,7 +4,8 @@ Guide:
 - Install BetterDiscord: https://betterdiscord.net/home/
 - Go to discord settings, scroll down to Better Discord and select Plugins.
 - Press open plugin folder
-- Right click on soldatClicker.plugin.js in on github and Save Page As.
+- Click on soldatClicker.plugin.js in on github then click on Raw.
+- Go to File -> Save Page As
 - Move the file you just downloaded to the BetterDiscord Plugin folder.
 - Go to plugin settings in BetterDiscord and enable the plugin
 - A message should appear for you to fill in the path to soldat.exe at the bottom of the current channel you have open.
