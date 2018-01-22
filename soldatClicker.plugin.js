@@ -8,7 +8,7 @@ soldatClicker.prototype.start = function () {
    $(document).on('dblclick', '.message', function(){
     clicked_message = $(this);
     if(soldat_location != 'undefined' || soldat_location != "") {
-      var regexp = /(soldat:\/\/.*\d[0-9])/
+      var regexp = /(soldat:\/\/?.*:\d+\/\d+)/
       var server_url = $(this).html().match(regexp)[0];
       var server_info = server_url.replace("soldat://", '').split(/:|\//);
       soldatClicker.prototype.openSoldat(soldat_location, server_info[0], server_info[1], server_info[2]);
@@ -22,7 +22,7 @@ soldatClicker.prototype.readWriteFile = function() {
   var error_state = false;
   var soldatLocation = localStorage.getItem("soldatLocation")
   if(soldatLocation == null || soldatLocation == "") {
-    var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe (Ex: F://Soldat/soldat.exe)</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
+    var element = '<div id="setup-wrapper" style="color: #fff; width: 100%; height: 200px; background: #000; padding: 15px;"><strong>Please enter the file path to soldat.exe</strong><br /><em style="font-size: 8pt">- Due to security in the browser I am unable to use a file selector</em><br /><em style="font-size: 8pt">- Once you enter a path discord will reload</em><br /><br />PATH: <input type="text" id="path" style="width: 50%;" /></div>';
     $(".message:last").after(element);
     $("#path").on('change', function(){
       if($("#path").val() != "") {
@@ -93,7 +93,7 @@ soldatClicker.prototype.getDescription = function () {
 };
 
 soldatClicker.prototype.getVersion = function () {
-    return "0.0.1";
+    return "0.0.2";
 };
 
 soldatClicker.prototype.getAuthor = function () {
