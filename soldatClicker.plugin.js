@@ -8,7 +8,7 @@ soldatClicker.prototype.start = function () {
    $(document).on('dblclick', '.message', function(){
     clicked_message = $(this);
     if(soldat_location != 'undefined' || soldat_location != "") {
-      var regexp = /(soldat:\/\/?.*:\d+\/\d+)/
+      var regexp = /(soldat:\/\/?[a-z].*?:\d*\/\d*)/
       var server_url = $(this).html().match(regexp)[0];
       var server_info = server_url.replace("soldat://", '').split(/:|\//);
       soldatClicker.prototype.openSoldat(soldat_location, server_info[0], server_info[1], server_info[2]);
